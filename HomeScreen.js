@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, SafeAreaView, Linking, Alert } from "react-native";
+import { Platform } from 'react-native';    
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
@@ -104,6 +105,19 @@ const HomeScreen = ({ navigation }) => {
           <Image source={require("./assets/menu.png")} style={styles.menuIcon} />
         </TouchableOpacity>
       </View>
+      
+      {Platform.OS !== 'web' && (
+  <MapView
+    style={{ flex: 1 }}
+    initialRegion={{
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }}
+  />
+)}
+
 
       {/* Map Section (Top) */}
       <View style={styles.mapContainer}>

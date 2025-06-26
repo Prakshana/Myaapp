@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet,Text } from "react-native";
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
@@ -12,8 +12,17 @@ const SplashScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={require("./assets/logo.png")} style={styles.logo} />
+      <View style={styles.logocontainer}>
+      <Image source={require("./assets/logo.png")} 
+      style={styles.logo} 
+      resizeMode="contain"
+      />
+      </View>
+
+      <Text style={styles.tex}>nagardootFE</Text>
+     
     </View>
+   
   );
 };
 
@@ -22,12 +31,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: 'white',
+      
+  },
+  logocontainer:{
+    shadowColor: '#000',        
+    overflow: 'hidden',         
+             
+
   },
   logo: {
-    width: 150,
+    width: 200,
     height: 150,
+ 
+   
+    
   },
+  tex:{
+    paddingTop:10,
+    fontSize:20
+  }
 });
 
 export default SplashScreen;

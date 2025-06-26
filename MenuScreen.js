@@ -1,16 +1,28 @@
-import React from "react";
+import React,{useContext} from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+ import { ThemeContext } from './ThemeContext';
 
 const MenuScreen = ({ navigation }) => {
+   const { colors } = useContext(ThemeContext);
   const handleOptionPress = (option) => {
-    console.log(`${option} clicked`);
-    // You can navigate to respective screens here, e.g.,
-    // navigation.navigate("ProfileScreen");
-  };
+    console.log(`${option} clicked`); 
+
+  if (option === "Profile") {
+    navigation.navigate("Profile");
+  } else if (option === "About") {
+    navigation.navigate("About");
+  } else if (option === "Settings") {
+    navigation.navigate("Settings"); 
+  } else if (option === "Logout") {
+    navigation.navigate("LoginScreen");
+  }
+};
+
+
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Menu</Text>
+    <View style={[styles.container,{backgroundColor:colors.background}]}>
+      <Text style={[styles.header,{color:colors.text}]}>Menu</Text>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleOptionPress("Profile")}>
         <Text style={styles.menuText}>Profile</Text>
       </TouchableOpacity>
